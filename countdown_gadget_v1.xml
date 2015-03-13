@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+        <ModulePrefs 
+                title="Countdown Gadget" 
+                width="143" height="95"
+                title_url="http://157.27.206.66:8000/"
+                description="Countdown Gadget that calculates the date correctly on a Google Site - follow the instructions on my site Steegle.com"
+                screenshot="http://www.steegle.com/_/rsrc/1209058059131/config/app/images/customLogo/customLogo.gif?revision=3"
+                thumbnail="http://sites.google.com/site/gadgetsbysj/gadgets/iframe/iframe-thumbnail.png"
+                directory_title="Countdown Gadget"
+        >
+          <Require feature="dynamic-height" />
+        </ModulePrefs>
+        <UserPref name="event_name" display_name="Event Name" required="true" default_value="A Very Special Day" />
+        <UserPref name="event_date_date" display_name="Event Day of Month" required="true" default_value="20" datatype="enum">
+                <EnumValue value="01" />
+                <EnumValue value="02" />
+                <EnumValue value="03" />
+                <EnumValue value="04" />
+                <EnumValue value="05" />
+                <EnumValue value="06" />
+                <EnumValue value="07" />
+                <EnumValue value="08" />
+                <EnumValue value="09" />
+                <EnumValue value="10" />
+                <EnumValue value="11" />
+                <EnumValue value="12" />
+                <EnumValue value="13" />
+                <EnumValue value="14" />
+                <EnumValue value="15" />
+                <EnumValue value="16" />
+                <EnumValue value="17" />
+                <EnumValue value="18" />
+                <EnumValue value="19" />
+                <EnumValue value="20" />
+                <EnumValue value="21" />
+                <EnumValue value="22" />
+                <EnumValue value="23" />
+                <EnumValue value="24" />
+                <EnumValue value="25" />                                                                                                                                                                                        
+                <EnumValue value="26" />                                                                                                                                                                                        
+                <EnumValue value="27" />                                                                                                                                                                                        
+                <EnumValue value="28" />                                                                                                                                                                                        
+                <EnumValue value="29" />                                                                                                                                                                                        
+                <EnumValue value="30" />                                                                                                                                                                                        
+                <EnumValue value="31" />                                                                                                                                                                                        
+        </UserPref>                                                                                                                                                                                                             
+        <UserPref name="event_date_month" display_name="Event Month" required="true" default_value="09" datatype="enum">                                                                                                        
+                <EnumValue value="01" />                                                                                                                                                                                        
+                <EnumValue value="02" />                                                                                                                                                                                        
+                <EnumValue value="03" />                                                                                                                                                                                        
+                <EnumValue value="04" />                                                                                                                                                                                        
+                <EnumValue value="05" />                                                                                                                                                                                        
+                <EnumValue value="06" />                                                                                                                                                                                        
+                <EnumValue value="07" />                                                                                                                                                                                        
+                <EnumValue value="08" />                                                                                                                                                                                        
+                <EnumValue value="09" />                                                                                                                                                                                        
+                <EnumValue value="10" />                                                                                                                                                                                        
+                <EnumValue value="11" />                                                                                                                                                                                        
+                <EnumValue value="12" />
+        </UserPref>
+        <UserPref name="event_date_year" display_name="Event Year" required="true" default_value="1997" />
+        <UserPref name="background_colour" display_name="Background Colour" required="true" default_value="#FFFFFF" />
+        <UserPref name="text_colour" display_name="Text Colour" required="true" default_value="#333333" />
+        <UserPref name="border_width" display_name="Border Width" required="true" default_value="1" />
+        <UserPref name="font_size" display_name="Font Size (pixels)" required="true" default_value="12" />
+        <Content type="html"><![CDATA[
+                <script type="text/javascript">
+                        // Get User Prefs
+                        var prefs = new _IG_Prefs(__MODULE_ID__);
+                        var event_date_date = prefs.getInt("event_date_date");
+                        var event_date_month = prefs.getInt("event_date_month") - 1;
+                        var event_date_year = prefs.getInt("event_date_year");
+                        var event_name = prefs.getString("event_name");
+                        var background_colour = prefs.getString("background_colour");
+                        var text_colour = prefs.getString("text_colour");
+                        var border_width = prefs.getInt("border_width");
+                        var font_size = prefs.getInt("font_size");
+                        var today_date = new Date();
+                        var event_date = new Date(event_date_year,event_date_month,event_date_date); // Don't forget January = 0
+                        var event_diff = null;
+                        var one_day = 1000*60*60*24;
+                        var days_left = Math.ceil((event_date.getTime()-today_date.getTime())/one_day);
+
+                        if (days_left > 1) {
+                                event_diff = "giorni al";
+                        }
+                        else
+                                if (days_left == 1) {
+                                        event_diff = "giorno al";
+                        }
+                        else
+                                if (days_left == 0) {
+                                        event_diff = "giorni al";
+                        }
+                        else
+                                if (days_left == -1) {
+                                        event_diff = "giorni dal";
+                                        days_left = -days_left;
+                        }else{
+                                event_diff = "giorni dal";
+                                days_left = -days_left;
+                        }
+
+                        document.write("<p style=\"text-align:center;font-size:"+font_size+"px;margin:0;border:"+border_width+"px solid #333;padding:0 0 0.5em 0;color:"+text_colour+";background-color:"+background_colour+"\"><span style=\"font-size:4em;font-weight:bold;\">"+days_left+"</span><br />"+event_diff+"<br /><strong>"+event_name+"</strong></p>");
+
+                </script>
+        ]]></Content>
+</Module>
