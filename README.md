@@ -1,6 +1,6 @@
-Google Sites - Content Countdown Gadget
+# Google Sites - Content Countdown Gadget
 
-Instructions
+## Instructions
 
 Navigate to the page you want to have the countdown on
 
@@ -15,15 +15,16 @@ Set any of the settings you like and use the OK button to add it to the page.
 
 That's it you're done.
 
-Settings Available
+## Settings Available
 
-Background Colour - specify anyway allowed in CSS, e.g. hex (#000000), words (black) or RGB.
+* **Background Colour** - specify anyway allowed in CSS, e.g. hex (#000000), words (black) or RGB.
 
-Text Colour - specify anyway allowed in CSS, e.g. hex (#000000), words (black) or RGB.
+* **Text Colour** - specify anyway allowed in CSS, e.g. hex (#000000), words (black) or RGB.
 
-Border Width - in pixels.
+* **Border Width** - in pixels.
 
-Font Size - in pixles (for cross-browser compatibility).
+* **Font Size** - in pixles (for cross-browser compatibility).
 
-Requirements
+## Requirements
+
 This gadget is JavaScript-based so it requires JavaScript to be enabled on the user's browser.
